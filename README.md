@@ -28,7 +28,7 @@ That Tabular Reports Internal Recipient Generator App is a Qlik Sense applicatio
     
     4. On the "Configuration" section: 
 
-        A) Enter 1 or 0 to generate (1) a 'tenant wide' recipient QVD with email addresses for all users in the tenant
+        A) Enter 1 or 0 to generate (1) a single recipient QVD with email addresses for every user currently in the tenant
         
         IE:   LET vGenerateTenantRecipients=1;
 
@@ -37,7 +37,7 @@ That Tabular Reports Internal Recipient Generator App is a Qlik Sense applicatio
         IE: LET vSpacetoStoreQVDs  '<SpaceName>:DataFiles'
         IE: LET vSpacetoStoreQVDs='Recipient Lists:DataFiles';
 
-        C) (optional) List 0 or more AppIDs. A set of QVDs containing the names and email addresses of all tenant users with access to the app(s) will be generated. App ACLs can be different to their Spaces when 'app sharing' is performed.
+        C) (optional) List 0 or more AppIDs.  For each AppID added to the RecipientsForApps inline table, a separate QVD will be generated for all internal tenant users who have access to the app based on permissions in the 'App Evaluator'. This includes users with 	access to the app view their space rights, or via app sharing rights.   
 
         IE: 
         RecipientsForApps:
@@ -46,7 +46,7 @@ That Tabular Reports Internal Recipient Generator App is a Qlik Sense applicatio
         5875bd4c-f1d2-472d-bb88-f942b6221378
         ];
 
-        D) (optional) List 0 or more SpaceIDs. A set of QVDs containing the names and email addresses of all tenant users with access to the space(s) will be generated. Space ACLs are visible by clicking on the members tab of the Space
+        D) (optional) List 0 or more SpaceIDs. For each SpaceID added to the RecipientsForSpaces inline table, a separate QVD will be generated for all internal tenant users who have access to the space based on permissions in the 'App Evaluator'. 
 
         IE: 
         RecipientsForSpaces:
